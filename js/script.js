@@ -1,14 +1,30 @@
 /* toggle icon number*/
 
-let menuIcon = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.navbar');
+// let menuIcon = document.querySelector('#menu-icon');
+// let navbar = document.querySelector('.navbar');
 
-menuIcon.onclick =() => {
-    menuIcon.classList.toggle('bx-x');
-    navbar.classList.toggle('active');
+// menuIcon.onclick =() => {
+//     menuIcon.classList.toggle('bx-x');
+//     navbar.classList.toggle('active');
    
 
- }
+//  }
+const menuIcon = document.getElementById("menu-icon");
+const navbar = document.querySelector(".navbar");
+const menuLinks = document.querySelectorAll(".navbar a"); // Select all menu links
+
+menuIcon.addEventListener("click", () => {
+    navbar.classList.toggle("active"); // Toggle the active class
+});
+
+// Close the menu when a link is clicked
+menuLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        navbar.classList.remove("active"); // Remove the active class
+    });
+});
+
+
 
 /* scroll section*/
 
@@ -45,3 +61,27 @@ navbar.classList.remove('active');
 
 
 };
+
+/* scroll reveal*/
+
+ScrollReveal({
+     reset: true,
+    distance: '80px',
+    duration: 2000,
+    delay:200
+});
+
+ScrollReveal().reveal('.home-content, .heading',{ origin:'top'});
+ScrollReveal().reveal('.home-img, .services-container, .portfolio-box, .contact form',
+     { origin:'bottom'});
+ScrollReveal().reveal('.home-content h1, .about-img', { origin:'left'});
+ScrollReveal().reveal('.home-content p, .about-content', { origin:'right'});
+
+/* typed js*/
+const typed = new Typed('.multiple-text',{
+    strings:[ 'Frontend Developer', 'Graphics Designer', 'Brand Designer'],
+    typeSpeed:100,
+    backSpeed:100,
+    backSDelay:1000,
+    loop: true
+});
